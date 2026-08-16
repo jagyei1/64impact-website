@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>64impact | Paid Media That Grows Your Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --mint:#EBF4EE;
+    --sky:#EAF1F7;
+    --mint-deep:#B9E1C6;
+    --sky-deep:#B7D9EA;
+    --ink:#1B211D;
+    --muted:#68746D;
+    --line:#DEE7E1;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+  ::selection{ background:var(--mint-deep); color:var(--ink); }
+  :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--muted);
+    display:inline-block;
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 32px;
+    max-width:1160px; margin:0 auto;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .logo-mark{
+    width:30px; height:30px; border-radius:8px;
+    background:linear-gradient(135deg, var(--mint-deep), var(--sky-deep));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:14px; color:var(--ink);
+  }
+  .logo-word{ font-family:'Fraunces', serif; font-weight:500; font-size:20px; letter-spacing:-0.01em; }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{ font-size:14px; color:var(--muted); font-weight:500; transition:color 0.15s ease; }
+  .nav-links a:hover{ color:var(--ink); }
+  .btn{
+    font-family:'Inter', sans-serif; font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:100px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all 0.18s ease; border:1px solid transparent; cursor:pointer;
+    background:none; -webkit-appearance:none; appearance:none;
+  }
+  .btn-primary{ background:var(--ink); color:var(--white); }
+  .btn-primary:hover{ background:#000; transform:translateY(-1px); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  /* HERO */
+  .hero{
+    padding:120px 0 100px;
+    position:relative;
+    overflow:hidden;
+    background:var(--mint);
+  }
+  .hero-watermark{
+    position:absolute;
+    right:-40px; top:50%;
+    transform:translateY(-50%);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:min(46vw, 560px);
+    color:rgba(255,255,255,0.55);
+    line-height:1;
+    pointer-events:none;
+    user-select:none;
+    z-index:0;
+  }
+  .hero-inner{ position:relative; z-index:1; max-width:660px; }
+  .hero h1{
+    font-size:clamp(38px, 4.8vw, 60px);
+    margin:22px 0 22px;
+  }
+  .hero p.lead{
+    color:var(--muted);
+    font-size:18px;
+    max-width:520px;
+    margin-bottom:14px;
+  }
+  .hero p.lead-sub{
+    color:var(--muted);
+    font-size:15.5px;
+    max-width:520px;
+    margin-bottom:36px;
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-bottom:8px; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero-tagline{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    color:var(--ink);
+    margin-bottom:22px;
+    max-width:480px;
+  }
+  .hero-bullets{
+    list-style:none;
+    display:grid;
+    gap:8px;
+    margin-bottom:22px;
+  }
+  .hero-bullets li{
+    font-size:15px;
+    color:var(--ink);
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .hero-bullets li::before{ content:"✓"; color:var(--muted); flex-shrink:0; }
+
+  .dotgrid{
+    position:absolute;
+    left:-10px; bottom:-10px;
+    display:grid;
+    grid-template-columns:repeat(8, 1fr);
+    gap:9px;
+    z-index:0;
+    opacity:0.9;
+  }
+  .dotgrid span{ width:5px; height:5px; border-radius:50%; background:var(--sky-deep); }
+  .dotgrid span:nth-child(3n){ background:var(--mint-deep); }
+  .dotgrid span:nth-child(7n){ opacity:0.4; }
+
+  section{ padding:104px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(28px,3.4vw,42px); margin-top:18px; }
+  .section-head p{ color:var(--muted); margin-top:16px; font-size:16px; }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .section-head.center .eyebrow{ justify-content:center; }
+
+  /* WHY CHOOSE US */
+  .why{ border-bottom:1px solid var(--line); }
+  .why-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; margin-bottom:60px; }
+  .why-card{ border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px; background:var(--white); }
+  .why-card .dot{ width:10px; height:10px; border-radius:50%; margin-bottom:16px; }
+  .why-card:nth-child(1) .dot{ background:var(--mint-deep); }
+  .why-card:nth-child(2) .dot{ background:var(--sky-deep); }
+  .why-card:nth-child(3) .dot{ background:var(--mint-deep); }
+  .why-card:nth-child(4) .dot{ background:var(--sky-deep); }
+  .why-card h4{ font-family:'Fraunces', serif; font-size:16.5px; font-weight:500; margin-bottom:6px; }
+  .why-card p{ font-size:13.5px; color:var(--muted); }
+
+  .trust-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center; }
+  .founder-card{ background:var(--sky); border:1px solid var(--line); border-radius:var(--radius); padding:36px; }
+  .founder-avatar{
+    width:56px; height:56px; border-radius:50%;
+    background:linear-gradient(135deg, var(--mint-deep), var(--sky-deep));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:20px;
+    margin-bottom:20px;
+  }
+  .founder-card h3{ font-size:22px; margin-bottom:6px; font-weight:500; }
+  .founder-card .role{ font-size:13.5px; color:var(--muted); margin-bottom:4px; }
+  .founder-card .note{ font-size:13.5px; color:var(--muted); margin-top:20px; padding-top:20px; border-top:1px solid var(--line); }
+  .trust-copy h2{ font-size:clamp(26px,3vw,36px); margin-bottom:18px; }
+  .trust-copy p{ color:var(--muted); font-size:16px; margin-bottom:16px; }
+  .trust-copy p.emphasis{ color:var(--ink); font-weight:500; }
+  .trust-copy p:last-child{ margin-bottom:0; }
+
+  /* EXPERIENCE */
+  .experience{ border-bottom:1px solid var(--line); background:var(--sky); }
+  .exp-top{ display:flex; align-items:baseline; gap:20px; margin-bottom:44px; flex-wrap:wrap; }
+  .exp-stat{ font-family:'Fraunces', serif; font-size:56px; font-weight:500; line-height:1; }
+  .exp-stat-label{ font-size:14px; color:var(--muted); max-width:220px; }
+  .industry-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:48px; }
+  .industry-chip{
+    background:var(--white); border:1px solid var(--line); border-radius:100px;
+    padding:9px 18px; font-size:13.5px; font-weight:500;
+  }
+  .exp-copy{ max-width:720px; margin-bottom:36px; }
+  .exp-copy p{ color:var(--muted); font-size:15.5px; margin-bottom:14px; }
+  .exp-copy p.emphasis{ color:var(--ink); }
+  .org-group{ padding:22px 0; border-top:1px solid var(--line); }
+  .org-group:last-of-type{ border-bottom:1px solid var(--line); margin-bottom:16px; }
+  .org-group-label{
+    font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;
+    color:var(--muted); margin-bottom:14px;
+  }
+  .org-list{ display:flex; flex-wrap:wrap; gap:12px 28px; }
+  .org-list span{ font-family:'Fraunces', serif; font-size:16px; color:var(--ink); }
+  .org-note{ font-size:12.5px; color:var(--muted); }
+
+  /* METRICS */
+  .metrics{ border-bottom:1px solid var(--line); }
+  .metrics-lead{ max-width:640px; margin-bottom:44px; }
+  .metrics-lead p{ color:var(--muted); font-size:16px; margin-top:14px; }
+  .metrics-lead p.strong{ color:var(--ink); font-family:'Fraunces', serif; font-size:19px; margin-top:20px; }
+  .metrics-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:44px; }
+  .metric-card{ border:1px solid var(--line); border-radius:var(--radius); padding:36px 32px; }
+  .metric-card:nth-child(1){ background:var(--mint); }
+  .metric-card:nth-child(2){ background:var(--white); }
+  .metric-card:nth-child(3){ background:var(--sky); }
+  .metric-card .num{ font-family:'Fraunces', serif; font-size:42px; font-weight:500; margin-bottom:10px; }
+  .metric-card .label{ font-size:14px; color:var(--muted); }
+  .metrics-outcomes{ list-style:none; display:grid; gap:10px; max-width:480px; }
+  .metrics-outcomes li{ font-size:15px; display:flex; gap:10px; }
+  .metrics-outcomes li::before{ content:"•"; color:var(--muted); }
+
+  /* GROWTH STAGE */
+  .growth{ border-bottom:1px solid var(--line); background:var(--mint); }
+  .growth-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .growth-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:38px; transition:box-shadow 0.2s ease, transform 0.2s ease; }
+  .growth-card:hover{ box-shadow:0 20px 40px -24px rgba(27,33,29,0.18); transform:translateY(-2px); }
+  .growth-card .tag{ font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:600; margin-bottom:16px; display:block; }
+  .growth-card h3{ font-size:23px; margin-bottom:12px; font-weight:500; }
+  .growth-card p{ color:var(--muted); font-size:15px; margin-bottom:22px; }
+  .growth-list{ list-style:none; display:grid; gap:10px; }
+  .growth-list li{ font-size:14.5px; display:flex; align-items:baseline; gap:10px; }
+  .growth-list li::before{ content:"✓"; color:var(--muted); }
+  .growth-cta{ text-align:center; margin-top:44px; }
+
+  /* SERVICES */
+  .services{ border-bottom:1px solid var(--line); }
+  .service-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .service-card{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:34px; transition:box-shadow 0.2s ease, transform 0.2s ease; }
+  .service-card:hover{ box-shadow:0 20px 40px -24px rgba(27,33,29,0.18); transform:translateY(-2px); }
+  .service-card .swatch{ width:34px; height:34px; border-radius:9px; margin-bottom:18px; }
+  .service-card:nth-child(1) .swatch{ background:var(--mint-deep); }
+  .service-card:nth-child(2) .swatch{ background:var(--sky-deep); }
+  .service-card:nth-child(3) .swatch{ background:var(--mint-deep); }
+  .service-card:nth-child(4) .swatch{ background:var(--sky-deep); }
+  .service-card h3{ font-size:21px; margin-bottom:10px; font-weight:500; }
+  .service-card p{ color:var(--muted); font-size:14.5px; }
+
+  /* PROCESS */
+  .process{ border-bottom:1px solid var(--line); background:var(--sky); }
+  .process-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:36px; position:relative; }
+  .process-grid::before{ content:""; position:absolute; top:22px; left:0; right:0; height:1px; background:var(--line); }
+  .process-step{ position:relative; }
+  .process-step .step-num{
+    font-family:'Fraunces', serif; font-size:20px; font-weight:500; color:var(--ink);
+    background:var(--sky); display:inline-block; padding-right:14px; margin-bottom:20px; position:relative; z-index:1;
+  }
+  .process-step h3{ font-size:18px; margin-bottom:10px; font-weight:500; }
+  .process-step p{ font-size:14px; color:var(--muted); }
+
+  /* WHO WE WORK WITH */
+  .who{ border-bottom:1px solid var(--line); background:var(--mint); }
+  .who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 32px; margin-top:8px; }
+  .who-item{ display:flex; align-items:flex-start; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); }
+  .who-check{ width:22px; height:22px; border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink); flex-shrink:0; margin-top:1px; }
+  .who-item p{ font-size:15px; }
+  .who-foot{ font-size:15px; color:var(--muted); margin-top:32px; max-width:640px; }
+
+  /* FAQ */
+  .faq{ border-bottom:1px solid var(--line); }
+  .faq-list{ max-width:760px; }
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-item summary{
+    list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+    padding:22px 0; font-family:'Fraunces', serif; font-size:17px; font-weight:500;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:"+"; font-family:'Inter', sans-serif; font-size:20px; color:var(--muted);
+    flex-shrink:0; margin-left:20px; transition:transform 0.2s ease;
+  }
+  .faq-item[open] summary::after{ content:"–"; }
+  .faq-item .faq-body{ padding:0 0 24px; color:var(--muted); font-size:15px; max-width:640px; }
+
+  /* CTA */
+  .cta-section{ text-align:center; padding:120px 0; background:linear-gradient(135deg, var(--mint), var(--sky)); }
+  .cta-section h2{ font-size:clamp(30px, 4vw, 48px); max-width:680px; margin:0 auto 22px; }
+  .cta-section p{ color:var(--muted); margin-bottom:38px; font-size:16px; max-width:520px; margin-left:auto; margin-right:auto; }
+  .cta-btns{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+  /* FOOTER */
+  footer{ padding:60px 0 44px; }
+  .foot-grid{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; padding-bottom:36px; border-bottom:1px solid var(--line); margin-bottom:26px; }
+  .foot-col p{ font-size:14px; color:var(--muted); max-width:260px; margin-top:14px; }
+  .foot-links{ display:flex; gap:60px; flex-wrap:wrap; }
+  .foot-links h4{ font-size:12px; text-transform:uppercase; color:var(--muted); letter-spacing:0.08em; margin-bottom:16px; font-weight:600; }
+  .foot-links ul{ list-style:none; display:grid; gap:10px; }
+  .foot-links a{ font-size:14px; color:var(--ink); }
+  .foot-links a:hover{ color:var(--muted); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--muted); }
+
+  @media (max-width: 860px){
+    .hero-watermark{ display:none; }
+    .service-grid, .growth-grid, .who-grid, .metrics-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr 1fr; }
+    .trust-grid{ grid-template-columns:1fr; }
+    .process-grid{ grid-template-columns:1fr 1fr; row-gap:36px; }
+    .nav-links{ display:none; }
+    .foot-grid{ flex-direction:column; }
+    .dotgrid{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <div class="logo-mark">64</div>
+      <div class="logo-word">64impact</div>
+    </div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button data-cal-link="jude64impact" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a call</button>
+  </nav>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-watermark">64</div>
+  <div class="dotgrid" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">Paid Media / Tracking / Optimisation</div>
+      <h1>Growth You Can Prove.</h1>
+      <p class="lead">Turn advertising spend into measurable business growth.</p>
+      <p class="hero-tagline">No vanity metrics. No guesswork. Just marketing decisions backed by data.</p>
+      <ul class="hero-bullets">
+        <li>Generate more qualified leads</li>
+        <li>Increase sales and revenue</li>
+        <li>Improve performance through tracking and optimisation</li>
+      </ul>
+      <p class="lead-sub">Whether you're launching your first campaigns or scaling existing ones, we make every pound count.</p>
+      <div class="hero-ctas">
+        <button data-cal-link="jude64impact" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book Your Free Growth Strategy Call</button>
+        <a href="#services" class="btn btn-ghost">Explore How We Help Businesses Grow</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. WHY BUSINESSES CHOOSE 64IMPACT -->
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Businesses Choose 64impact</div>
+      <h2>Senior marketing expertise. Performance-focused results.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="dot"></div>
+        <h4>Data-driven strategy</h4>
+        <p>Every decision traced back to a number, not a hunch.</p>
+      </div>
+      <div class="why-card">
+        <div class="dot"></div>
+        <h4>Performance marketing</h4>
+        <p>Campaigns built around outcomes, not platform activity.</p>
+      </div>
+      <div class="why-card">
+        <div class="dot"></div>
+        <h4>Growth optimisation</h4>
+        <p>Continuous testing rather than a one-off launch and leave.</p>
+      </div>
+      <div class="why-card">
+        <div class="dot"></div>
+        <h4>Senior expertise</h4>
+        <p>Strategy shaped by experience managing serious budgets.</p>
+      </div>
+    </div>
+    <div class="trust-grid">
+      <div class="founder-card">
+        <div class="founder-avatar">64</div>
+        <h3>64impact</h3>
+        <div class="role">Performance Marketing Agency</div>
+        <p class="note">Built on senior marketing expertise, managing multi-million-pound advertising budgets across multiple industries.</p>
+      </div>
+      <div class="trust-copy">
+        <p>64impact was founded on years of leading performance marketing strategies across multiple industries, managing multi-million-pound advertising budgets both in-house and agency-side.</p>
+        <p>We combine the strategic thinking of an experienced in-house marketing leader with the agility, responsiveness and accountability of a specialist performance agency.</p>
+        <p>Every campaign is built around accurate tracking, transparent reporting and continuous optimisation, ensuring your advertising investment is focused on generating measurable business growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. EXPERIENCE ACROSS LEADING ORGANISATIONS -->
+<section class="experience" id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Experience Across Leading Organisations</div>
+    <div class="exp-top">
+      <div class="exp-stat">8+</div>
+      <div class="exp-stat-label">Industries supported across a career in performance marketing</div>
+    </div>
+    <div class="industry-chips">
+      <div class="industry-chip">Technology</div>
+      <div class="industry-chip">Professional Services</div>
+      <div class="industry-chip">Hospitality</div>
+      <div class="industry-chip">Healthcare</div>
+      <div class="industry-chip">Consumer Brands</div>
+      <div class="industry-chip">B2B Lead Generation</div>
+    </div>
+    <div class="exp-copy">
+      <h2 style="margin-bottom:18px; font-size:clamp(24px,2.8vw,32px);">Proven experience managing complex marketing campaigns.</h2>
+      <p>64impact's foundations were built on managing paid media campaigns and growth strategies for established organisations across multiple industries.</p>
+      <p class="emphasis">This includes supporting marketing activity for organisations such as:</p>
+    </div>
+    <div class="org-group">
+      <div class="org-group-label">In-house marketing roles</div>
+      <div class="org-list">
+        <span>Kantar</span>
+        <span>BSI</span>
+      </div>
+    </div>
+    <div class="org-group">
+      <div class="org-group-label">Agency-side experience</div>
+      <div class="org-list">
+        <span>ExxonMobil</span>
+        <span>Trustpilot</span>
+        <span>Rocco Forte Hotels</span>
+        <span>SunPower Maxeon</span>
+        <span>Sarah Chapman</span>
+        <span>111 Harley Street</span>
+        <span>P&amp;G</span>
+        <span>Unilever</span>
+        <span>Kellogg's</span>
+        <span>Johnson &amp; Johnson</span>
+        <span>Coty</span>
+      </div>
+    </div>
+    <p class="org-note">Experience gained through a combination of in-house marketing roles and agency-side professional partnerships, spanning technology, professional services, hospitality, healthcare and consumer brands: industries where performance, efficiency and measurable results matter.</p>
+  </div>
+</section>
+
+<!-- 4. PERFORMANCE MARKETING EXPERTISE -->
+<section class="metrics">
+  <div class="wrap">
+    <div class="metrics-lead">
+      <div class="eyebrow">Marketing Performance That Matters</div>
+      <h2 style="margin-top:18px; font-size:clamp(26px,3vw,36px);">Success isn't clicks or impressions. It's business outcomes.</h2>
+      <p>Throughout our work, we have helped organisations improve marketing performance through stronger strategy, accurate measurement and continuous optimisation.</p>
+      <p class="strong">Generate more qualified leads. Increase sales opportunities. Maximise return from every advertising pound.</p>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="num">£3M+</div>
+        <div class="label">Advertising budgets managed</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">£10M+</div>
+        <div class="label">Revenue generated through marketing campaigns</div>
+      </div>
+      <div class="metric-card">
+        <div class="num">200,000+</div>
+        <div class="label">Leads generated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CHOOSE YOUR GROWTH PATH -->
+<section class="growth">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Where Are You On Your Growth Journey?</div>
+      <h2>Every business is different. We start by understanding where you are today.</h2>
+    </div>
+    <div class="growth-grid">
+      <div class="growth-card">
+        <span class="tag">Starting paid advertising</span>
+        <h3>Launching Paid Advertising</h3>
+        <p>You have a great business but haven't built a predictable customer acquisition channel yet. We help you create the right foundations: from strategy and tracking through to campaign launch and optimisation.</p>
+        <ul class="growth-list">
+          <li>Businesses starting paid advertising</li>
+          <li>Companies without an internal marketing team</li>
+          <li>Founders looking for a clear growth strategy</li>
+        </ul>
+      </div>
+      <div class="growth-card">
+        <span class="tag">Scaling existing campaigns</span>
+        <h3>Improving Existing Campaigns</h3>
+        <p>You are already investing in advertising but want stronger performance. We help identify wasted spend, improve tracking, optimise campaigns and create a clearer path to profitable growth.</p>
+        <ul class="growth-list">
+          <li>Businesses already running Google or Meta Ads</li>
+          <li>Companies looking to improve ROAS</li>
+          <li>Teams needing senior paid media expertise</li>
+        </ul>
+      </div>
+    </div>
+    <div class="growth-cta">
+      <button data-cal-link="jude64impact" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Find The Right Solution For Your Business</button>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How We Help Businesses Grow</div>
+      <h2>Built around outcomes, not platforms.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="swatch"></div>
+        <h3>Paid Media Management</h3>
+        <p>Strategic management of Google Ads, Meta Ads, LinkedIn Ads and YouTube campaigns designed to generate measurable business growth.</p>
+      </div>
+      <div class="service-card">
+        <div class="swatch"></div>
+        <h3>Paid Advertising Strategy</h3>
+        <p>We create a clear roadmap for businesses launching or scaling paid media campaigns.</p>
+      </div>
+      <div class="service-card">
+        <div class="swatch"></div>
+        <h3>Tracking &amp; Analytics</h3>
+        <p>Accurate data is the foundation of successful advertising. We ensure you understand exactly what is driving leads, sales and revenue.</p>
+      </div>
+      <div class="service-card">
+        <div class="swatch"></div>
+        <h3>Conversion Optimisation</h3>
+        <p>We analyse the customer journey and identify opportunities to turn more visitors into enquiries and customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. OUR PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Our Approach</div>
+      <h2>Discover, build, launch, optimise.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <h3>Discover</h3>
+        <p>We understand your business, customers, goals and current marketing performance.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <h3>Build</h3>
+        <p>We develop your strategy, implement tracking and create campaigns designed around your objectives.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <h3>Launch</h3>
+        <p>Campaigns go live with structured testing and careful monitoring.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <h3>Optimise</h3>
+        <p>We continuously analyse performance, test improvements and maximise your return on investment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. WHO WE WORK WITH -->
+<section class="who">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Who We Work With</div>
+      <h2>Ambitious businesses ready for measurable growth.</h2>
+      <p>64impact partners with ambitious businesses that want marketing to become a predictable growth channel. We work best with businesses that:</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-item">
+        <div class="who-check">✓</div>
+        <p>Want to generate more leads or sales through paid advertising</p>
+      </div>
+      <div class="who-item">
+        <div class="who-check">✓</div>
+        <p>Value transparency and measurable results</p>
+      </div>
+      <div class="who-item">
+        <div class="who-check">✓</div>
+        <p>Are ready to invest in sustainable customer acquisition</p>
+      </div>
+      <div class="who-item">
+        <div class="who-check">✓</div>
+        <p>Want experienced marketing expertise without hiring a full internal team</p>
+      </div>
+    </div>
+    <p class="who-foot">Whether you are launching your first campaigns or scaling existing advertising activity, we provide the strategy and support needed to grow with confidence.</p>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Frequently Asked Questions</div>
+      <h2>Common questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you work with businesses that have never run paid advertising before?</summary>
+        <div class="faq-body">Yes. We work with both businesses launching paid advertising for the first time and businesses looking to improve existing campaigns. If you are new to paid media, we help you build the right foundations: from choosing the right platforms and setting up accurate tracking to creating campaigns designed around your business goals. Our aim is to make paid advertising simple, transparent and measurable, so you can invest with confidence.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you only work with businesses that already have large advertising budgets?</summary>
+        <div class="faq-body">Not necessarily. We work with ambitious businesses at different stages of growth. However, paid advertising works best when businesses have enough budget to gather meaningful data, test effectively and optimise campaigns. We typically recommend businesses have the ability to invest at least £1,500–£3,000 per month in advertising spend. If you're unsure whether paid advertising is right for your business, we can help you assess the opportunity.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Which advertising platforms do you manage?</summary>
+        <div class="faq-body">We specialise in performance-focused paid media campaigns across Google Ads, Microsoft Ads, Meta Ads (Facebook &amp; Instagram), LinkedIn Ads and YouTube Ads. The right platform depends on your customers, industry and growth objectives. We focus on choosing the channels most likely to generate a positive return rather than recommending platforms unnecessarily.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How quickly can I expect to see results?</summary>
+        <div class="faq-body">Every business is different, and results depend on factors such as your industry, offer, budget, competition and customer journey. Some improvements can be identified within the first few weeks, but meaningful optimisation usually requires enough data to test and refine campaigns properly. Our focus is on building sustainable performance rather than chasing short-term results that cannot be maintained.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens when I start working with 64impact?</summary>
+        <div class="faq-body">We begin with understanding your business, customers and objectives. From there, we review your current marketing activity (if applicable), identify opportunities, create a tailored strategy and implement the campaigns and tracking required to measure performance. Once campaigns are live, we continuously monitor, test and optimise to improve results over time.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need a website or landing page before running ads?</summary>
+        <div class="faq-body">A strong customer journey is essential for successful advertising. If you already have a website or landing pages, we can review and optimise them to improve performance. If you are launching paid advertising for the first time, we can advise on what is needed to ensure your campaigns have the best chance of converting visitors into leads or customers.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can you guarantee a specific number of leads or sales?</summary>
+        <div class="faq-body">No. No reputable marketing agency can guarantee specific results because performance depends on many factors outside of advertising alone. What we can guarantee is a structured approach based on data, testing and continuous optimisation to maximise your chances of achieving your goals. We focus on improving the factors we can control: targeting, messaging, tracking, campaign structure and conversion performance.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to sign a long-term contract?</summary>
+        <div class="faq-body">We believe long-term partnerships should be built on results and trust. Our approach is designed to create sustainable growth, with regular communication, transparent reporting and ongoing optimisation to ensure campaigns continue delivering value. We'll always recommend the approach that makes the most sense for your business rather than locking you into unnecessary commitments.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much does it cost to work with 64impact?</summary>
+        <div class="faq-body">Every business has different requirements depending on goals, advertising budget and the level of support needed. Our partnerships are tailored around your growth objectives and the complexity of your campaigns. Book a free growth strategy call and we'll discuss your goals, current situation and whether 64impact is the right fit for your business.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FINAL CTA -->
+<section class="cta-section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Get Started</div>
+    <h2>Ready to make your advertising work harder?</h2>
+    <p>Whether you are launching paid advertising for the first time or looking to improve existing campaigns, 64impact can help you create a clearer, more profitable growth strategy.</p>
+    <div class="cta-btns">
+      <button data-cal-link="jude64impact" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book Your Free Growth Strategy Call</button>
+      <a href="mailto:info@64impact.com" class="btn btn-ghost">info@64impact.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo">
+          <div class="logo-mark">64</div>
+          <div class="logo-word">64impact</div>
+        </div>
+        <p>Paid media, tracking and optimisation for ambitious businesses ready for measurable growth.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@64impact.com">info@64impact.com</a></li>
+            <li><a href="tel:+447404031702">+44 7404 031702</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 64impact. All rights reserved.</span>
+      <span>Built for performance.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const dotgrid = document.querySelector('.dotgrid');
+  for(let i=0;i<64;i++){
+    const s = document.createElement('span');
+    dotgrid.appendChild(s);
+  }
+</script>
+
+<!-- Cal.com booking embed -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://cal.com" });
+  Cal("ui", {
+    styles: { branding: { brandColor: "#1B211D" } },
+    hideEventTypeDetails: false,
+    layout: "month_view"
+  });
+</script>
+
+</body>
+</html>
