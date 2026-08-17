@@ -17,7 +17,7 @@ document.addEventListener('click', function(e){
   if(localStorage.getItem('cc_consent')) return;
   const bar = document.createElement('div');
   bar.className = 'cookie-banner';
-  bar.innerHTML = 'We use essential and functional cookies, including from our booking tool Cal.com, to run this site. See our <a href="privacy-policy.html">Privacy Policy</a>.<button class="btn btn-primary btn-sm" type="button">Got it</button>';
+  bar.innerHTML = 'We use essential and functional cookies, including from our booking tool Cal.com, to run this site. See our <a href="privacy-policy">Privacy Policy</a>.<button class="btn btn-primary btn-sm" type="button">Got it</button>';
   document.body.appendChild(bar);
   bar.querySelector('button').addEventListener('click', function(){
     localStorage.setItem('cc_consent', '1');
