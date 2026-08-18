@@ -342,7 +342,9 @@ section{ padding:100px 0; }
   box-shadow:0 20px 40px -20px rgba(27,33,29,0.4);
 }
 .cookie-banner a{ color:var(--white); text-decoration:underline; }
-.cookie-banner button{ flex-shrink:0; margin-left:auto; }
+.cookie-banner-btns{ display:flex; gap:10px; flex-shrink:0; margin-left:auto; }
+.cookie-banner .btn-ghost{ border-color:rgba(255,255,255,0.35); color:var(--white); }
+.cookie-banner .btn-ghost:hover{ border-color:var(--white); }
 
 /* CTA */
 .cta-section{ text-align:center; padding:120px 0; background:linear-gradient(135deg, var(--mint), var(--sky)); }
