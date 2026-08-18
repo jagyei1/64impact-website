@@ -50,9 +50,45 @@
   </url>
   <url>
     <loc>https://64impact.com/insights</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/five-signs-google-ads-wasting-budget</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/conversion-tracking-accuracy</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/when-to-refresh-ad-creative</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/paid-ads-budget-uk-business</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/search-vs-performance-max</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://64impact.com/insights/then-now-how-action-framework</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://64impact.com/contact</loc>
