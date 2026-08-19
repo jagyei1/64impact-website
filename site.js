@@ -35,8 +35,25 @@ function loadCalWidget(){
   });
 }
 
+// Google Analytics 4 — only ever loads if the visitor explicitly accepts. Never lazy-loads
+// on interaction like Cal.com, since analytics is passive tracking, not a requested feature.
+function loadGA4(){
+  if(window.ga4Loaded) return;
+  window.ga4Loaded = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P58K450W67';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-P58K450W67');
+}
+
 if(localStorage.getItem('cc_consent') === 'accepted'){
   loadCalWidget();
+  loadGA4();
 }
 
 // First click on any "Book a call" button loads the widget on demand, then replays the click
@@ -57,13 +74,13 @@ document.addEventListener('click', function(e){
   if(localStorage.getItem('cc_consent')) return;
   const bar = document.createElement('div');
   bar.className = 'cookie-banner';
-  bar.innerHTML = 'This site doesn\'t set cookies of its own. Clicking "Book a call" loads our scheduling tool, Cal.com, which may set its own cookies to run the calendar. See our <a href="privacy-policy">Privacy Policy</a>.<div class="cookie-banner-btns"><button class="btn btn-ghost btn-sm" type="button" data-choice="rejected">Necessary only</button><button class="btn btn-primary btn-sm" type="button" data-choice="accepted">Accept</button></div>';
+  bar.innerHTML = 'This site keeps cookies to a minimum. Accepting also enables site analytics (Google Analytics) to help us understand traffic. Clicking "Book a call" loads our scheduling tool, Cal.com, either way, since that\'s a feature you\'re actively requesting. See our <a href="privacy-policy">Privacy Policy</a>.<div class="cookie-banner-btns"><button class="btn btn-ghost btn-sm" type="button" data-choice="rejected">Necessary only</button><button class="btn btn-primary btn-sm" type="button" data-choice="accepted">Accept</button></div>';
   document.body.appendChild(bar);
   bar.querySelectorAll('button').forEach(function(btn){
     btn.addEventListener('click', function(){
       const choice = btn.getAttribute('data-choice');
       localStorage.setItem('cc_consent', choice);
-      if(choice === 'accepted'){ loadCalWidget(); }
+      if(choice === 'accepted'){ loadCalWidget(); loadGA4(); }
       bar.remove();
     });
   });
