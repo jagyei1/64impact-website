@@ -51,9 +51,21 @@ function loadGA4(){
   gtag('config', 'G-P58K450W67');
 }
 
+// Microsoft Clarity — same rule as GA4: only loads on explicit accept, never by default.
+function loadClarity(){
+  if(window.clarityLoaded) return;
+  window.clarityLoaded = true;
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "y4mhmanwqf");
+}
+
 if(localStorage.getItem('cc_consent') === 'accepted'){
   loadCalWidget();
   loadGA4();
+  loadClarity();
 }
 
 // First click on any "Book a call" button loads the widget on demand, then replays the click
@@ -74,13 +86,13 @@ document.addEventListener('click', function(e){
   if(localStorage.getItem('cc_consent')) return;
   const bar = document.createElement('div');
   bar.className = 'cookie-banner';
-  bar.innerHTML = 'This site keeps cookies to a minimum. Accepting also enables site analytics (Google Analytics) to help us understand traffic. Clicking "Book a call" loads our scheduling tool, Cal.com, either way, since that\'s a feature you\'re actively requesting. See our <a href="privacy-policy">Privacy Policy</a>.<div class="cookie-banner-btns"><button class="btn btn-ghost btn-sm" type="button" data-choice="rejected">Necessary only</button><button class="btn btn-primary btn-sm" type="button" data-choice="accepted">Accept</button></div>';
+  bar.innerHTML = 'This site keeps cookies to a minimum. Accepting also enables site analytics (Google Analytics and Microsoft Clarity) to help us understand traffic and improve the site. Clicking "Book a call" loads our scheduling tool, Cal.com, either way, since that\'s a feature you\'re actively requesting. See our <a href="privacy-policy">Privacy Policy</a>.<div class="cookie-banner-btns"><button class="btn btn-ghost btn-sm" type="button" data-choice="rejected">Necessary only</button><button class="btn btn-primary btn-sm" type="button" data-choice="accepted">Accept</button></div>';
   document.body.appendChild(bar);
   bar.querySelectorAll('button').forEach(function(btn){
     btn.addEventListener('click', function(){
       const choice = btn.getAttribute('data-choice');
       localStorage.setItem('cc_consent', choice);
-      if(choice === 'accepted'){ loadCalWidget(); loadGA4(); }
+      if(choice === 'accepted'){ loadCalWidget(); loadGA4(); loadClarity(); }
       bar.remove();
     });
   });
