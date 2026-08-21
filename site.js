@@ -35,20 +35,18 @@ function loadCalWidget(){
   });
 }
 
-// Google Analytics 4 — only ever loads if the visitor explicitly accepts. Never lazy-loads
+// Google Tag Manager — only ever loads if the visitor explicitly accepts. Never lazy-loads
 // on interaction like Cal.com, since analytics is passive tracking, not a requested feature.
-function loadGA4(){
-  if(window.ga4Loaded) return;
-  window.ga4Loaded = true;
+// GTM manages GA4 (and any future tags) from here on, so there's no separate gtag.js load.
+function loadGTM(){
+  if(window.gtmLoaded) return;
+  window.gtmLoaded = true;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   const s = document.createElement('script');
   s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P58K450W67';
+  s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TKFSMDZR';
   document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', 'G-P58K450W67');
 }
 
 // Microsoft Clarity — same rule as GA4: only loads on explicit accept, never by default.
@@ -64,7 +62,7 @@ function loadClarity(){
 
 if(localStorage.getItem('cc_consent') === 'accepted'){
   loadCalWidget();
-  loadGA4();
+  loadGTM();
   loadClarity();
 }
 
@@ -92,7 +90,7 @@ document.addEventListener('click', function(e){
     btn.addEventListener('click', function(){
       const choice = btn.getAttribute('data-choice');
       localStorage.setItem('cc_consent', choice);
-      if(choice === 'accepted'){ loadCalWidget(); loadGA4(); loadClarity(); }
+      if(choice === 'accepted'){ loadCalWidget(); loadGTM(); loadClarity(); }
       bar.remove();
     });
   });
