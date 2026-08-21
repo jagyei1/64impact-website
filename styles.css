@@ -95,7 +95,7 @@ nav{
 /* HOME HERO */
 .hero{ padding:120px 0 100px; position:relative; overflow:hidden; background:var(--mint); }
 .hero-watermark{
-  position:absolute; right:-40px; top:700px; transform:translateY(-50%);
+  position:absolute; right:-40px; top:calc(670px + min(46vw, 560px)/2); transform:translateY(-50%);
   font-family:'Fraunces', serif; font-weight:600; font-size:min(46vw, 560px);
   color:rgba(255,255,255,0.55); line-height:1; pointer-events:none; user-select:none; z-index:0;
 }
