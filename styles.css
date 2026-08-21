@@ -64,7 +64,7 @@ nav{
 .dropdown{ position:relative; }
 .dropdown > a{ font-size:14px; color:var(--muted); font-weight:500; padding:8px 0; display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
 .dropdown > a::after{ content:"⌄"; font-size:12px; }
-.dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu{ display:block; }
+.dropdown.open .dropdown-menu{ display:block; }
 .dropdown-menu{
   display:none; position:absolute; top:100%; left:-16px;
   background:var(--white); border:1px solid var(--line); border-radius:12px;

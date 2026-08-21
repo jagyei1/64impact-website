@@ -12,6 +12,27 @@ document.addEventListener('click', function(e){
   }
 });
 
+// Services dropdown: opens on a real mouseenter event rather than CSS :hover, and
+// closes on mouseleave or when a menu link is clicked. Using :hover alone left the
+// menu stuck open after clicking a link, since the cursor lands on the same screen
+// position on the new page (sticky header) without the browser ever registering a
+// "mouse left" moment, so :hover matched immediately on load and stayed matched through scroll.
+(function(){
+  const dropdown = document.querySelector('.dropdown');
+  if(!dropdown) return;
+  let closeTimer;
+  dropdown.addEventListener('mouseenter', function(){
+    clearTimeout(closeTimer);
+    dropdown.classList.add('open');
+  });
+  dropdown.addEventListener('mouseleave', function(){
+    closeTimer = setTimeout(function(){ dropdown.classList.remove('open'); }, 150);
+  });
+  dropdown.querySelectorAll('.dropdown-menu a').forEach(function(a){
+    a.addEventListener('click', function(){ dropdown.classList.remove('open'); });
+  });
+})();
+
 // Decorative 64-cell dot grid (only present on the homepage hero)
 const dotgrid = document.querySelector('.dotgrid');
 if(dotgrid){
