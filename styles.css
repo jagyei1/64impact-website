@@ -230,6 +230,12 @@ section{ padding:100px 0; }
 .platform-badge{ display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-size:13.5px; font-weight:600; color:var(--ink); }
 .platform-badge::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--mint-deep); flex-shrink:0; }
 .platform-badge:nth-child(even)::before{ background:var(--sky-deep); }
+.scarcity-badge{
+  display:inline-flex; align-items:center; gap:8px; background:var(--white); border:1px solid var(--line);
+  border-radius:100px; padding:8px 16px; font-size:13.5px; font-weight:600; color:var(--ink); margin-bottom:18px;
+}
+.scarcity-badge::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--mint-deep); flex-shrink:0; }
+.cta-section .scarcity-badge{ margin:0 0 18px; }
 .service-card h3{ font-size:21px; margin-bottom:10px; font-weight:500; }
 .service-card p{ color:var(--muted); font-size:14.5px; margin-bottom:16px; }
 .service-card a.learn{ font-size:13.5px; font-weight:600; color:var(--ink); display:inline-flex; align-items:center; gap:6px; }
