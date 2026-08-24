@@ -300,6 +300,9 @@ section{ padding:100px 0; }
 .who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 32px; margin-top:8px; }
 .who-item{ display:flex; align-items:flex-start; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); }
 .who-check{ width:22px; height:22px; border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink); flex-shrink:0; margin-top:1px; }
+.pain-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:8px; }
+.pain-dot.mint{ background:var(--mint-deep); }
+.pain-dot.sky{ background:var(--sky-deep); }
 .who-item p{ font-size:15px; }
 .who-foot{ font-size:15px; color:var(--muted); margin-top:32px; max-width:640px; }
 
