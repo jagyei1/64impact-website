@@ -19,7 +19,7 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   font-optical-sizing:none;
-  font-variation-settings:'opsz' 100;
+  font-variation-settings:'opsz' 20;
 }
 h1,h2,h3{
   font-family:'Fraunces', serif;
